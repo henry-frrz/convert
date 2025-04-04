@@ -32,9 +32,15 @@ const convertCurrency = (price, prefix) => {
   try {
     footer.classList.add('show-result')
 
-    description.textContent = `${prefix} 1 = ${price}`
+    description.textContent = `${prefix} 1 = ${formatCurrencyBRL(price)}`
   } catch (error) {
     alert('Não foi possível converter. Tente novamente mais tarde.')
   }
 }
+
+const formatCurrencyBRL = value => {
+  return value.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
 }
