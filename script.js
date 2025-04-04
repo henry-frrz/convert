@@ -2,6 +2,8 @@ const form = document.querySelector('form')
 const amount = document.querySelector('#amount')
 const currency = document.querySelector('#currency')
 const footer = document.querySelector('footer')
+const description = document.querySelector('#description')
+const result = document.querySelector('#result')
 
 const USD = 5.82
 const EUR = 6.34
@@ -33,6 +35,13 @@ const convertCurrency = (price, prefix) => {
     footer.classList.add('show-result')
 
     description.textContent = `${prefix} 1 = ${formatCurrencyBRL(price)}`
+
+    const amountTotal = amount.value * price
+
+    result.textContent = `${formatCurrencyBRL(amountTotal).replace(
+      'R$',
+      ''
+    )} Reais`
   } catch (error) {
     alert('Não foi possível converter. Tente novamente mais tarde.')
   }
